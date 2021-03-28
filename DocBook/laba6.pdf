@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://docbook.org/xml/5.1/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://docbook.org/xml/5.1/sch/docbook.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<article xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1">
+    <info>
+        <title>Руководство пользователя игры "Snake"</title>
+        <author>
+            <personname>
+            	<surname>Симонов</surname>
+                <firstname>Дмитрий</firstname>
+                
+            </personname>
+        </author>
+    </info>
+    <sect1>
+        <title>Описание игры</title>        
+        <para>«Game Snake»</para>        
+    	<para>Компьютерная игра, возникшая в середине или в конце 1970-х. </para>
+    	<para>Игрок управляет длинным, тонким существом, напоминающим змею, которое ползает по плоскости (как правило, ограниченной стенками), собирая еду (или другие предметы), избегая столкновения с собственным хвостом и краями игрового поля. </para>
+    	<para>Игрок управляет направлением движения головы змеи (обычно 4 направления: вверх, вниз, влево, вправо), а хвост змеи движется следом.  </para>
+    	<para>Игрок не может остановить движение змеи.</para>       
+    </sect1>
+    <sect1>
+        <title>Детали реализации</title> 
+        <para>Как реализованы основные функции игры</para>
+        
+        <example>
+            <title>Проигрыш реализован с помощью ограничения координат поля игры</title>
+            <programlisting>
+<![CDATA[
+				 int maxXpos = pbCanvas.Size.Width / Settings.Widht;
+                 int maxYpos = pbCanvas.Size.Height / Settings.Height;
+
+                    if (
+                        Snake[i].X <0 || Snake[i].Y<0||
+                        Snake[i].X >maxXpos|| Snake[i].Y>maxYpos
+                        )
+                    {
+                        die();
+                    }
+
+                    for (int j=1; j < Snake.Count; j++)
+                    {
+                        if (Snake[i].X == Snake[j].X && Snake[i].Y == Snake[j].Y)
+                        {
+                            die();
+                        }
+                    }
+                ]]>
+
+</programlisting>
+        </example>
+        <example>
+            <title>Генерация еды для змейки</title>
+            <programlisting><![CDATA[
+	 public void generateFood()
+        {
+            int maxXpos = pbCanvas.Size.Width / Settings.Widht;
+            int maxYpos = pbCanvas.Size.Height / Settings.Height;
+
+            Random rnd = new Random();
+            food = new Circle { X = rnd.Next(0, maxXpos), Y = rnd.Next(0, maxYpos) };//создаем еду с рандомными x,y
+        }
+                ]]></programlisting>
+        </example>
+        <example>
+            <title>Движение змейки задается по оси Х и Y</title>
+            <programlisting><![CDATA[
+ public void movePlayer()
+        {
+            for (int i = Snake.Count - 1;i >= 0; i--)
+            {
+                if (i == 0)
+                {
+                    switch (Settings.direction)
+                    {
+                        case Directions.Right:
+                            Snake[i].X++;
+                            break;
+                        case Directions.Left:
+                            Snake[i].X--;
+                            break;
+                        case Directions.Up:
+                            Snake[i].Y--;
+                            break;
+                        case Directions.Down:
+                            Snake[i].Y++;
+                            break;
+                    }
+                        }
+                ]]></programlisting>
+        </example>
+    </sect1>
+</article>
