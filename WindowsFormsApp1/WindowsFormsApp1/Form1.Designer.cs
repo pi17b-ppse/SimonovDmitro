@@ -57,7 +57,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 32);
             this.label1.TabIndex = 1;
-            this.label1.Text = "";
+            this.label1.Text = "Score:";
             // 
             // label2
             // 
@@ -67,7 +67,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 32);
             this.label2.TabIndex = 2;
-            this.label2.Text = "";
+            this.label2.Text = "00";
             // 
             // label3
             // 
@@ -79,7 +79,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 32);
             this.label3.TabIndex = 3;
-            this.label3.Text = "";
+            this.label3.Text = "End Text";
 
             // 
             // Form1
@@ -96,7 +96,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "";
+            this.Text = " Snake Game";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyisdown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keyisup);
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();
