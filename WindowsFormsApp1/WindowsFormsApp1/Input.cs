@@ -21,5 +21,10 @@ namespace WindowsFormsApp1
 
             return (bool)keyTable[key];
         }
+
+        public static void changeState(Keys key, bool state) // ФУНКЦИЯ ПРОВЕРКИ НАЖАТИЯ КЛАВИШ
+        {
+            keyTable[key] = state;
+        }
     }
 }
